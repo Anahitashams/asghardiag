@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Settings, Info, Package, Newspaper } from "lucide-react";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +20,31 @@ function Header() {
   }, []);
 
   const menuItems = [
-    { href: "#about-me", label: "درباره من" },
-    { href: "#skills", label: "مهارت ها" },
-    { href: "#experience", label: "سوابق کاری" },
-    { href: "#", label: "LOGO", isLogo: true },
-    { href: "#education", label: "سوابق تحصیلی" },
-    { href: "#Projects", label: "پروژه ها" },
-    { href: "#call", label: "تماس با من" },
+    {
+      href: "#services",
+      label: "خدمات ما",
+      icon: <Settings className="ml-2" color="#FF6A00" size={18} />,
+    },
+    {
+      href: "#about",
+      label: "درباره ما",
+      icon: <Info className="ml-2" color="#FF6A00" size={18} />,
+    },
+    {
+      href: "#",
+      label: "LOGO",
+      isLogo: true,
+    },
+    {
+      href: "#products",
+      label: "محصولات",
+      icon: <Package className="ml-2" color="#FF6A00" size={18} />,
+    },
+    {
+      href: "#articles",
+      label: "مقالات",
+      icon: <Newspaper className="ml-2" color="#FF6A00" size={18} />,
+    },
   ];
 
   return (
@@ -36,10 +54,10 @@ function Header() {
       }  sm:bg-transparent`}
     >
       <div
-        className="flex flex-col sm:flex-row items-center justify-center px-4 py-3 max-w-7xl mx-auto"
+        className="text-white text-2xl flex flex-col sm:flex-row items-center justify-center px-10 py-3 max-w-7xl mx-auto"
         dir="rtl"
       >
-        <div className="w-full flex justify-between items-center sm:hidden">
+        <div className=" w-full flex justify-between items-center sm:hidden">
           <Image
             src="/logo.png"
             alt="ANATECH Logo"
@@ -49,7 +67,7 @@ function Header() {
           />
           <button
             onClick={toggleMenu}
-            className="text-white focus:outline-none"
+            className="focus:outline-none"
             aria-label="Toggle Menu"
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -61,14 +79,14 @@ function Header() {
             isOpen ? "block" : "hidden"
           } w-full sm:flex sm:w-auto mt-4 sm:mt-0`}
         >
-          <ul className="flex flex-col sm:flex-row items-center gap-4 bg-gray-100 sm:bg-transparent rounded-md sm:rounded-none p-4 sm:p-0">
-            {menuItems.map(({ href, label, isLogo }) => (
-              <li key={href} className="whitespace-nowrap">
+          <ul className="flex flex-col sm:flex-row items-center gap-14 rounded-md sm:bg-transparent  sm:rounded-none p-6 sm:p-0">
+            {menuItems.map(({ href, label, isLogo, icon }) => (
+              <li key={href} className="whitespace-nowrap ">
                 {isLogo ? (
                   <div className="mx-8 sm:mx-12 w-[100px] sm:w-[150px] flex-shrink-0">
                     <Image
                       src="/logo.png"
-                      alt="ANATECH Logo"
+                      alt="asghardiag Logo"
                       width={100}
                       height={100}
                       className="mx-auto"
@@ -78,9 +96,10 @@ function Header() {
                   <Link
                     href={href}
                     onClick={() => setIsOpen(false)}
-                    className="block px-4 py-1 lg:text-gray-50 lg:hover:text-gray-200 sm:text-gray-700 text-sm sm:text-base transition sm:hover:text-gray-500"
+                    className="flex items-center gap-1 px-4 py-1 text-sm sm:text-base transition duration-200 hover:shadow-lg hover:shadow-orange-500 hover:scale-105"
                   >
-                    {label}
+                    {icon}
+                    <span>{label}</span>
                   </Link>
                 )}
               </li>

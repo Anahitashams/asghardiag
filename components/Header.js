@@ -96,7 +96,7 @@ function Header() {
                   <Link
                     href={href}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-1 px-4 py-1 text-sm sm:text-base transition duration-200 hover:shadow-lg hover:shadow-orange-500 hover:scale-105"
+                    className="flex items-center gap-1 px-4 py-1 text-sm sm:text-base transition duration-200 hover:shadow-lg hover:scale-125"
                   >
                     {icon}
                     <span>{label}</span>

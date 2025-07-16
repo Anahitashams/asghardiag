@@ -1,0 +1,75 @@
+{
+  "posts": [
+    {
+      "title": "sucond title",
+      "views": 3000,
+      "id": "2"
+    },
+    {
+      "id": "6f0b",
+      "name": "anahita"
+    },
+    {
+      "id": "2",
+      "name": "anahita"
+    },
+    {
+      "id": "2",
+      "name": "anahita"
+    },
+    {
+      "id": "fed7",
+      "data": [
+        {
+          "name": "Anahita",
+          "email": "anahitashams16@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": "8749",
+      "data": [
+        {
+          "name": "anahitashams",
+          "email": "anahitashams01@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": "9e63",
+      "data": [
+        {
+          "name": "Anahita",
+          "email": "anahitashams01@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": "5132",
+      "data": [
+        {
+          "name": "Anahita",
+          "email": "anahitashams16@gmail.com"
+        }
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": null
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": null
+    }
+  ],
+  "profile": [
+    {
+      "name": "typicode",
+      "id": "1dc2"
+    }
+  ]
+}

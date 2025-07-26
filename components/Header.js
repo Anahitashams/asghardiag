@@ -3,7 +3,16 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Settings, Info, Package, Newspaper } from "lucide-react";
+import {
+  Menu,
+  X,
+  Settings,
+  Info,
+  Package,
+  Newspaper,
+  Phone,
+  Calendar,
+} from "lucide-react";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +30,11 @@ function Header() {
 
   const menuItems = [
     {
+      href: "#",
+      label: "LOGO",
+      isLogo: true,
+    },
+    {
       href: "#services",
       label: "خدمات ما",
       icon: <Settings className="ml-2" color="#FF6A00" size={18} />,
@@ -31,9 +45,9 @@ function Header() {
       icon: <Info className="ml-2" color="#FF6A00" size={18} />,
     },
     {
-      href: "#",
-      label: "LOGO",
-      isLogo: true,
+      href: "#contact",
+      label: "تماس با ما",
+      icon: <Phone className="ml-2" color="#FF6A00" size={18} />,
     },
     {
       href: "#products",
@@ -45,19 +59,24 @@ function Header() {
       label: "مقالات",
       icon: <Newspaper className="ml-2" color="#FF6A00" size={18} />,
     },
+    {
+      href: "#booking",
+      label: "رزرو آنلاین",
+      icon: <Calendar className="ml-2" color="#FF6A00" size={18} />,
+    },
   ];
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed top-0 z-50 w-[90%] transition-all duration-300 ${
         showHeader ? "opacity-100" : "opacity-0 pointer-events-none"
-      }  sm:bg-transparent`}
+      } sm:bg-transparent`}
     >
       <div
-        className=" text-2xl flex flex-col text-white sm:flex-row items-center justify-center px-10 py-3 max-w-7xl mx-auto"
+        className="text-2xl flex flex-col text-white sm:flex-row items-center justify-center px-10 py-3 max-w-7xl mx-auto"
         dir="rtl"
       >
-        <div className=" w-full flex justify-between items-center text-white sm:hidden">
+        <div className="w-full flex justify-between items-center text-white sm:hidden">
           <Image
             src="/logo.png"
             alt="ANATECH Logo"
@@ -74,14 +93,15 @@ function Header() {
           </button>
         </div>
 
+        {/* منوی اصلی */}
         <nav
           className={`${
             isOpen ? "block" : "hidden"
           } w-full sm:flex sm:w-auto mt-4 sm:mt-0`}
         >
-          <ul className="flex flex-col sm:flex-row items-center gap-14 rounded-md sm:bg-transparent  sm:rounded-none p-6 sm:p-0">
+          <ul className="flex flex-col sm:flex-row items-center gap-14 rounded-md sm:bg-transparent sm:rounded-none p-6 sm:p-0">
             {menuItems.map(({ href, label, isLogo, icon }) => (
-              <li key={href} className="whitespace-nowrap ">
+              <li key={href} className="whitespace-nowrap">
                 {isLogo ? (
                   <div className="mx-8 sm:mx-12 w-[100px] sm:w-[150px] flex-shrink-0">
                     <Image

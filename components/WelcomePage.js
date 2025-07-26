@@ -35,9 +35,9 @@ function WelcomePage() {
         </div>
       </div>
 
-      <div className="w-[50%] h-full flex justify-start flex-col items-center relative z-10">
+      <div className="w-[50%] h-full flex justify-end flex-col items-center relative z-10">
         <Image
-          className="w-full h-[100%]"
+          className="w-full h-[90%]"
           src="/img/workmen.png"
           alt="person"
           width={500}

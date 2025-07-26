@@ -2,7 +2,7 @@ import React from "react";
 import Header from "@/components/Header";
 import WelcomePage from "@/components/WelcomePage";
 import Services from "@/components/Services";
-import Callus from "@/components/Callus";
+// import Callus from "@/components/Callus";
 
 const ServicesList = [
   { img: "/img/luxrycar.png", description: "ریمپ" },
@@ -20,7 +20,7 @@ function page() {
       <Header />
       <WelcomePage />
       <Services services={ServicesList} />
-      <Callus />
+      {/* <Callus /> */}
     </>
   );
 }

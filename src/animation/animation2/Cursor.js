@@ -1,13 +1,13 @@
 "use client";
 import { Player } from "@lottiefiles/react-lottie-player";
 
-export default function Mainweel() {
+export default function Cursor() {
   return (
-    <div style={{ width: 700, height: 700 }}>
+    <div style={{ width: 300, height: 300 }}>
       <Player
         autoplay
         loop
-        src="/animation/Gearauto.json"
+        src="/animation/Animation-Arrow.json"
         style={{ height: "100%", width: "100%" }}
       />
     </div>

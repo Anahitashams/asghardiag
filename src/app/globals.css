@@ -19,3 +19,8 @@ body {
   direction: rtl;
   text-align: right;
 }
+.bg-mydiv {
+  background-image: url("/asghardiag/public/img/bg.png");
+  background-size: cover;
+  background-position: center;
+}

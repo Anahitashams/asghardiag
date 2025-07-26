@@ -54,10 +54,10 @@ function Header() {
       }  sm:bg-transparent`}
     >
       <div
-        className="text-white text-2xl flex flex-col sm:flex-row items-center justify-center px-10 py-3 max-w-7xl mx-auto"
+        className=" text-2xl flex flex-col text-white sm:flex-row items-center justify-center px-10 py-3 max-w-7xl mx-auto"
         dir="rtl"
       >
-        <div className=" w-full flex justify-between items-center sm:hidden">
+        <div className=" w-full flex justify-between items-center text-white sm:hidden">
           <Image
             src="/logo.png"
             alt="ANATECH Logo"

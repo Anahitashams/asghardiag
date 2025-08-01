@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -8,35 +9,41 @@ import "swiper/css/navigation";
 
 function Services({ services }) {
   return (
-    <div className="w-[90%] m-auto py-8">
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        navigation
-        autoplay={{ delay: 5000 }}
-        spaceBetween={20}
-        breakpoints={{
-          320: { slidesPerView: 5 },
-          640: { slidesPerView: 5 },
-          1024: { slidesPerView: 5 },
-        }}
-        className="px-2"
-      >
-        {services.map((service, index) => (
-          <SwiperSlide key={index}>
-            <div className="w-32 h-32 bg-amber-100 flex flex-col items-center justify-center rounded-lg shadow">
-              <div className="w-16 h-16 relative mb-2">
-                <Image
-                  alt={service.description}
-                  src={service.Image}
-                  fill
-                  className="object-contain"
-                />
+    <div className="w-full h-screen flex flex-col justify-start items-center bg-">
+      <h1 className="m-auto text-3xl font-black">خدمات</h1>
+      <div className="w-[90%] m-auto py-8 relative px-8">
+        <Swiper
+          dir="rtl"
+          modules={[Navigation, Autoplay]}
+          navigation
+          autoplay={{ delay: 5000 }}
+          spaceBetween={30}
+          breakpoints={{
+            320: { slidesPerView: 2 },
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+          }}
+          className="relative"
+        >
+          {services.map((service, index) => (
+            <SwiperSlide key={index}>
+              <div className="flex flex-col items-center hover:scale-105 cursor-pointer ">
+                <div className=" bg-amber-100 flex items-center justify-center rounded-lg  hover:scale-105 duration-105 shadow w-40 h-40 relative mb-4">
+                  <Image
+                    alt={service.description}
+                    src={service.img}
+                    fill
+                    className="object-contain rounded-2xl"
+                  />
+                </div>
+                <h1 className="text-lg font-bold text-center text-gray-800">
+                  {service.description}
+                </h1>
               </div>
-              <h1 className="text-sm text-center">{service.description}</h1>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 }

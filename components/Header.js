@@ -35,12 +35,12 @@ function Header() {
       isLogo: true,
     },
     {
-      href: "#articles",
+      href: "#Home",
       label: "خانه",
       icon: <Newspaper className="ml-2" color="#FF6A00" size={18} />,
     },
     {
-      href: "#services",
+      href: "#Services",
       label: "خدمات ما",
       icon: <Settings className="ml-2" color="#FF6A00" size={18} />,
     },
@@ -50,7 +50,7 @@ function Header() {
       icon: <Info className="ml-2" color="#FF6A00" size={18} />,
     },
     {
-      href: "#contact",
+      href: "#callus",
       label: "تماس با ما",
       icon: <Phone className="ml-2" color="#FF6A00" size={18} />,
     },

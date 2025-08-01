@@ -31,8 +31,9 @@ function Callus() {
     <>
       <Toaster />
       <div
+        id="callus"
         dir="rtl"
-        className="w-full min-h-screen bg-[#0f172a] px-4 sm:px-8 md:px-16 lg:px-32 py-10 flex flex-col items-center"
+        className="w-full min-h-screen bg-[#000000] px-4 sm:px-8 md:px-16 lg:px-32 py-10 flex flex-col items-center"
       >
         <div className="text-center mb-8">
           <h1 className="text-xl text-white sm:text-2xl font-bold">
@@ -40,7 +41,7 @@ function Callus() {
           </h1>
         </div>
 
-        <div className="m-auto w-full flex flex-col lg:flex-row flex-wrap shadow-md shadow-[#FF6A00] bg-[#151c2f] rounded-4xl">
+        <div className="m-auto w-full flex flex-col lg:flex-row flex-wrap shadow-md shadow-[#FF6A00] bg-[#0000009c] rounded-4xl">
           <form
             onSubmit={SubmitHandler}
             className="w-full lg:w-1/2 p-6 sm:p-8 rounded-xl space-y-5"

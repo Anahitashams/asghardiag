@@ -3,8 +3,8 @@ import Header from "@/components/Header";
 import WelcomePage from "@/components/WelcomePage";
 import Services from "@/components/Services";
 import "./globals.css";
-
-// import Callus from "@/components/Callus";
+import Callus from "@/components/Callus";
+import About from "@/components/About";
 
 const ServicesList = [
   { img: "/img/diag.png", description: "دیاگ" },
@@ -26,7 +26,8 @@ function page() {
       <Header />
       <WelcomePage />
       <Services services={ServicesList} />
-      {/* <Callus /> */}
+      <About />
+      <Callus />
     </>
   );
 }

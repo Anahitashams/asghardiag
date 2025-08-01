@@ -3,11 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Cursor from "@/src/animation/animation2/cursor";
+import Cursor from "@/src/animation/animation2/Cursor";
 
 function WelcomePage() {
   return (
     <div
+      id="Home"
       dir="ltr"
       className="h-screen w-full flex flex-row relative bg-cover bg-center"
       style={{ backgroundImage: "url('/img/realbg.jpg')" }}

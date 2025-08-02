@@ -60,7 +60,7 @@ function Header() {
       icon: <Package className="ml-2" color="#FF6A00" size={18} />,
     },
     {
-      href: "#booking",
+      href: "#reserve",
       label: "رزرو آنلاین",
       icon: <Calendar className="ml-2" color="#FF6A00" size={18} />,
     },
@@ -78,11 +78,11 @@ function Header() {
       >
         <div className="w-full flex justify-between items-center text-white sm:hidden">
           <Image
-            src="/logo.png"
+            src="/croppedlogo.png"
             alt="ANATECH Logo"
             width={50}
             height={50}
-            className="mr-2"
+            className="mr-8 sm:-mr-8"
           />
           <button
             onClick={toggleMenu}
@@ -105,7 +105,7 @@ function Header() {
                 {isLogo ? (
                   <div className="mx-8 sm:mx-12 w-[100px] sm:w-[150px] flex-shrink-0">
                     <Image
-                      src="/logo.png"
+                      src="/cropped-removebg-logo.png"
                       alt="asghardiag Logo"
                       width={100}
                       height={100}

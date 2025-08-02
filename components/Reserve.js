@@ -57,18 +57,18 @@ export default function BookingPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6  min-h-[700px]">
+    <div id="reserve" className=" max-w-5xl mx-auto p-6">
       <Toaster position="top-center" reverseOrder={false} />
-      <h1 className="text-3xl font-bold text-orange-500 mb-20 text-center">
+      <h1 className="text-3xl font-bold text-orange-500 mb-10 sm:mb-20 text-center">
         رزرو آنلاین خدمات خودرو
       </h1>
 
-      <Card className="w-[60%] h-auto mx-auto">
+      <Card className="w-full sm:w-[60%] h-auto mx-auto">
         <CardContent>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="space-y-6">
             {step === 1 && (
               <>
-                <div className="mb-4">
+                <div>
                   <label
                     className="block mb-1 font-semibold"
                     htmlFor="fullName"
@@ -82,9 +82,10 @@ export default function BookingPage() {
                     onChange={handleChange}
                     placeholder="مثلاً: علی رضایی"
                     required
+                    className="w-full"
                   />
                 </div>
-                <div className="mb-4">
+                <div>
                   <label className="block mb-1 font-semibold" htmlFor="phone">
                     شماره تماس
                   </label>
@@ -96,6 +97,7 @@ export default function BookingPage() {
                     onChange={handleChange}
                     placeholder="مثلاً: 09123456789"
                     required
+                    className="w-full"
                   />
                 </div>
               </>
@@ -103,7 +105,7 @@ export default function BookingPage() {
 
             {step === 2 && (
               <>
-                <div className="mb-4">
+                <div>
                   <label
                     className="block mb-1 font-semibold"
                     htmlFor="carModel"
@@ -117,9 +119,10 @@ export default function BookingPage() {
                     onChange={handleChange}
                     placeholder="مثلاً: پژو ۲۰۶"
                     required
+                    className="w-full"
                   />
                 </div>
-                <div className="mb-4">
+                <div>
                   <label className="block mb-1 font-semibold" htmlFor="service">
                     خدمات مورد نظر
                   </label>
@@ -146,7 +149,7 @@ export default function BookingPage() {
 
             {step === 3 && (
               <>
-                <div className="mb-4">
+                <div>
                   <label className="block mb-1 font-semibold" htmlFor="date">
                     تاریخ مراجعه
                   </label>
@@ -161,7 +164,7 @@ export default function BookingPage() {
                   />
                 </div>
 
-                <div className="mb-4">
+                <div>
                   <label className="block mb-1 font-semibold" htmlFor="time">
                     ساعت مراجعه
                   </label>
@@ -173,10 +176,11 @@ export default function BookingPage() {
                     onChange={handleChange}
                     required
                     step="60"
+                    className="w-full"
                   />
                 </div>
 
-                <div className="mb-4">
+                <div>
                   <label className="block mb-1 font-semibold" htmlFor="notes">
                     توضیحات بیشتر (اختیاری)
                   </label>
@@ -187,15 +191,16 @@ export default function BookingPage() {
                     onChange={handleChange}
                     rows={4}
                     placeholder="هر توضیحی که لازم می‌دانید..."
+                    className="w-full"
                   />
                 </div>
               </>
             )}
 
             {step === 4 && (
-              <div>
+              <div className="text-right">
                 <h2 className="text-xl font-bold mb-4">بازبینی اطلاعات</h2>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-gray-700 text-sm sm:text-base">
                   <li>
                     <strong>نام و نام خانوادگی:</strong> {form.fullName}
                   </li>
@@ -227,24 +232,33 @@ export default function BookingPage() {
               </div>
             )}
 
-            <div className="flex justify-between mt-6 items-center">
+            <div className="flex flex-col sm:flex-row justify-between mt-6 items-center gap-3">
               {step > 1 && (
-                <Button variant="outline" onClick={prevStep} type="button">
+                <Button
+                  variant="outline"
+                  onClick={prevStep}
+                  type="button"
+                  className="w-full sm:w-auto"
+                >
                   قبلی
                 </Button>
               )}
               {step < 4 && (
-                <Button onClick={nextStep} type="button">
+                <Button
+                  onClick={nextStep}
+                  type="button"
+                  className="w-full sm:w-auto"
+                >
                   بعدی
                 </Button>
               )}
               {step === 4 && !submitted && (
-                <Button type="submit" className="ml-auto">
+                <Button type="submit" className="w-full sm:w-auto">
                   ثبت رزرو
                 </Button>
               )}
               {step === 4 && submitted && (
-                <div className="ml-auto text-orange-500 text-3xl font-bold flex items-center gap-2">
+                <div className="text-orange-500 text-3xl font-bold flex items-center gap-2 mt-4 sm:mt-0">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-8 h-8 text-orange-500"

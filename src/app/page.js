@@ -5,6 +5,8 @@ import Services from "@/components/Services";
 import "./globals.css";
 import Callus from "@/components/Callus";
 import About from "@/components/About";
+import Reserve from "@/components/Reserve";
+import Footer from "@/components/Footer";
 
 const ServicesList = [
   { img: "/img/diag.png", description: "دیاگ" },
@@ -27,7 +29,9 @@ function page() {
       <WelcomePage />
       <Services services={ServicesList} />
       <About />
+      <Reserve />
       <Callus />
+      <Footer />
     </>
   );
 }

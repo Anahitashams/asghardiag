@@ -55,10 +55,11 @@ function Header() {
       icon: <Phone className="ml-2" color="#FF6A00" size={18} />,
     },
     {
-      href: "#products",
+      href: "/products",
       label: "محصولات",
       icon: <Package className="ml-2" color="#FF6A00" size={18} />,
     },
+
     {
       href: "#reserve",
       label: "رزرو آنلاین",

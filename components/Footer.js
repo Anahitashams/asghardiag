@@ -2,10 +2,9 @@ import React from "react";
 import Image from "next/image";
 import {
   FaInstagram,
-  FaTelegramPlane,
-  FaLinkedin,
-  FaGithub,
+  FaPhoneAlt, // اضافه شد
 } from "react-icons/fa";
+import { MdEmail } from "react-icons/md"; // اضافه شد
 
 export default function Footer() {
   return (
@@ -68,15 +67,7 @@ export default function Footer() {
             شبکه‌های اجتماعی
           </h3>
           <div className="flex gap-4 text-white">
-            <a
-              href="https://t.me/asghardiag"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Telegram"
-              className="hover:text-orange-300 transition"
-            >
-              <FaTelegramPlane size={20} />
-            </a>
+            {/* Instagram */}
             <a
               href="https://www.instagram.com/asghardiag"
               target="_blank"
@@ -86,14 +77,23 @@ export default function Footer() {
             >
               <FaInstagram size={20} />
             </a>
+
+            {/* Email */}
             <a
-              href="https://www.linkedin.com/in/asghardiag"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
+              href="mailto:example@gmail.com"
+              aria-label="Email"
               className="hover:text-orange-300 transition"
             >
-              <FaLinkedin size={20} />
+              <MdEmail size={20} />
+            </a>
+
+            {/* Phone */}
+            <a
+              href="tel:+989123456789"
+              aria-label="Phone"
+              className="hover:text-orange-300 transition"
+            >
+              <FaPhoneAlt size={20} />
             </a>
           </div>
         </div>

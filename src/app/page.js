@@ -10,17 +10,16 @@ import Footer from "@/components/Footer";
 
 const ServicesList = [
   { img: "/img/diag.png", description: "دیاگ" },
-  { img: "/img/gps.png", description: "ردیاب" },
-  { img: "/img/oil.png", description: "تعویض روغن" },
-  { img: "/img/tiuning.png", description: "تیونینگ" },
-  { img: "/img/remap.png", description: "ریمپ" },
-  { img: "/img/tameir.png", description: "تعمیر موتور" },
-  { img: "/img/bargh.png", description: "برق خودرو" },
-
-  { img: "/img/luxrycar.png", description: "ریمپ" },
-  { img: "/img/luxryminicar.png", description: "تیونینگ" },
-  { img: "/img/luxryminicar.png", description: "تیونینگ" },
-  { img: "/img/luxryminicar.png", description: "تیونینگ" },
+  { img: "/img/radyab.jpg", description: "ردیاب" },
+  { img: "/img/changeoil.jpg", description: "تعویض روغن" },
+  { img: "/img/tuninig.jpg", description: "تیونینگ" },
+  { img: "/img/remap.jpg", description: "ریمپ" },
+  { img: "/img/tamirmotor.jpg", description: "تعمیر موتور" },
+  { img: "/img/bargh.jpg", description: "برق خودرو" },
+  { img: "/img/anjector.jpg", description: "انژکتور" },
+  { img: "/img/eibyabi.jpg", description: "عیب یابی" },
+  { img: "/img/coler.jpg", description: "کولر" },
+  { img: "/img/mechanic.jpg", description: "مکانیکی" },
 ];
 function page() {
   return (

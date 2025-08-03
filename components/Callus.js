@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { Phone, Instagram, Mail, Send } from "lucide-react";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 function Callus() {
   const [Form, setForm] = useState({
@@ -97,9 +98,12 @@ function Callus() {
               <h1 className="text-lg px-2">آدرس اینستاگرام: oyek-web</h1>
             </div>
             <div className="flex items-center">
-              <Send className="w-6 h-20 text-blue-400" />
-              <h1 className="text-lg px-2">آدرس تلگرام: @oyek-Telegram</h1>
+              <FaMapMarkerAlt className="w-6 h-20 text-blue-400" />
+              <h1 className="text-lg px-2">
+                آدرس: تهران، خیابان Example، پلاک ۱۲۳
+              </h1>
             </div>
+
             <div className="flex items-center">
               <Mail className="w-6 h-20 text-yellow-400" />
               <h1 className="text-lg px-2">آدرس ایمیل: oyek@gmail.com</h1>

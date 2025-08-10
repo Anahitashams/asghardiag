@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
@@ -15,6 +16,9 @@ import {
 } from "lucide-react";
 
 function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   const [isOpen, setIsOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
 
@@ -29,11 +33,7 @@ function Header() {
   }, []);
 
   const menuItems = [
-    {
-      href: "#",
-      label: "LOGO",
-      isLogo: true,
-    },
+    { href: "#", label: "LOGO", isLogo: true },
     {
       href: "#Home",
       label: "خانه",
@@ -59,7 +59,6 @@ function Header() {
       label: "محصولات",
       icon: <Package className="ml-2" color="#FF6A00" size={18} />,
     },
-
     {
       href: "#reserve",
       label: "رزرو آنلاین",
@@ -67,40 +66,47 @@ function Header() {
     },
   ];
 
+  const textColorClass = isHome ? "text-white" : "text-black";
+  const iconColor = isHome ? "white" : "black";
+
   return (
     <header
-      className={`fixed top-0 z-50 w-[90%] transition-all duration-300 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         showHeader ? "opacity-100" : "opacity-0 pointer-events-none"
-      } sm:bg-transparent`}
+      }`}
     >
       <div
-        className="text-2xl flex flex-col text-white sm:flex-row items-center justify-center px-10 py-3 max-w-7xl mx-auto"
+        className={`text-2xl flex flex-col sm:flex-row items-center justify-center px-10 py-3 max-w-7xl mx-auto ${textColorClass}`}
         dir="rtl"
       >
-        <div className="w-full flex justify-between items-center text-white sm:hidden">
+        {/* Mobile Top Bar */}
+        <div className="w-full flex justify-between items-center sm:hidden">
           <Image
             src="/croppedlogo.png"
             alt="ANATECH Logo"
             width={50}
             height={50}
-            className="mr-8 sm:-mr-8"
           />
           <button
             onClick={toggleMenu}
             className="focus:outline-none"
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            {isOpen ? (
+              <X size={28} color={iconColor} />
+            ) : (
+              <Menu size={28} color={iconColor} />
+            )}
           </button>
         </div>
 
-        {/* منوی اصلی */}
+        {/* Menu */}
         <nav
           className={`${
-            isOpen ? "block" : "hidden"
+            isOpen ? "block bg-white shadow-lg rounded-lg p-6" : "hidden"
           } w-full sm:flex sm:w-auto mt-4 sm:mt-0`}
         >
-          <ul className="flex flex-col sm:flex-row items-center gap-14 rounded-md sm:bg-transparent sm:rounded-none p-6 sm:p-0">
+          <ul className="flex flex-col sm:flex-row items-center gap-14 rounded-md sm:rounded-none p-6 sm:p-0">
             {menuItems.map(({ href, label, isLogo, icon }) => (
               <li key={href} className="whitespace-nowrap">
                 {isLogo ? (
@@ -117,7 +123,9 @@ function Header() {
                   <Link
                     href={href}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-1 px-4 py-1 text-sm sm:text-base transition duration-200 hover:shadow-lg hover:scale-125"
+                    className={`flex items-center gap-1 px-4 py-1 text-sm sm:text-base transition duration-200 hover:text-orange-500 ${
+                      isOpen ? "text-black" : textColorClass
+                    }`}
                   >
                     {icon}
                     <span>{label}</span>

@@ -40,7 +40,7 @@ function WelcomePage() {
           <Link href="/products">
             <button
               type="button"
-              className="mt-10 w-[190px] h-[60px] bg-orange-600 hover:bg-orange-500 rounded-xl text-white text-[20px] font-semibold shadow-md transition duration-200 hover:scale-105"
+              className="mt-10 mb-10 sm:mb-0 w-[190px] h-[60px] bg-orange-600 hover:bg-orange-500 rounded-xl text-white text-[20px] font-semibold shadow-md transition duration-200 hover:scale-105"
             >
               محصولات
             </button>

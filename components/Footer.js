@@ -38,11 +38,6 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#pricing" className="hover:text-orange-300">
-                تعرفه‌ها
-              </a>
-            </li>
-            <li>
               <a href="#callus" className="hover:text-orange-300">
                 ارتباط با ما
               </a>
@@ -55,7 +50,9 @@ export default function Footer() {
           <h3 className="font-bold text-lg mb-4 text-orange-500">تماس با ما</h3>
           <ul className="space-y-2 text-sm">
             <li>تلفن: ۰۹۱۲۱۲۳۴۵۶۷</li>
-            <li>آدرس: تهران، فلکه دوم صادقیه</li>
+            <li>
+              آدرس: کرج،ماهدشت،خیابان اصلی انتهای ماهدشت برق و انژکتور اصغر{" "}
+            </li>
             <li>برند: اصغر دیاگ</li>
             <li>ایمیل: info@asgharDiag.ir</li>
           </ul>
@@ -66,7 +63,7 @@ export default function Footer() {
           <h3 className="font-bold text-lg mb-4 text-orange-500">
             شبکه‌های اجتماعی
           </h3>
-          <div className="flex gap-4 text-white">
+          <div className="flex items-center gap-4 text-white">
             {/* Instagram */}
             <a
               href="https://www.instagram.com/asghardiag"

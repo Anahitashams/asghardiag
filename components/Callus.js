@@ -100,7 +100,7 @@ function Callus() {
             <div className="flex items-center">
               <FaMapMarkerAlt className="w-6 h-20 text-blue-400" />
               <h1 className="text-lg px-2">
-                آدرس: تهران، خیابان Example، پلاک ۱۲۳
+                آدرس: کرج،ماهدشت،خیابان اصلی انتهای ماهدشت برق و انژکتور اصغر{" "}
               </h1>
             </div>
 

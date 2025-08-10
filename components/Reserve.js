@@ -22,14 +22,74 @@ export default function BookingPage() {
     time: "",
     notes: "",
   });
+  const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: false }));
   };
 
-  const nextStep = () => setStep((s) => Math.min(s + 1, 4));
+  const validateStep = () => {
+    let valid = true;
+    let newErrors = {};
+
+    if (step === 1) {
+      if (!form.fullName.trim()) {
+        newErrors.fullName = true;
+        toast.error("لطفاً نام و نام خانوادگی را وارد کنید");
+        valid = false;
+      }
+      if (!form.phone.trim()) {
+        newErrors.phone = true;
+        toast.error("لطفاً شماره تماس را وارد کنید");
+        valid = false;
+      } else if (!/^09\d{9}$/.test(form.phone)) {
+        newErrors.phone = true;
+        toast.error("شماره تماس باید با 09 شروع شده و 11 رقم باشد");
+        valid = false;
+      }
+    }
+
+    if (step === 2) {
+      if (!form.carModel.trim()) {
+        newErrors.carModel = true;
+        toast.error("لطفاً مدل خودرو را وارد کنید");
+        valid = false;
+      }
+      if (!form.service) {
+        newErrors.service = true;
+        toast.error("لطفاً خدمات مورد نظر را انتخاب کنید");
+        valid = false;
+      }
+    }
+
+    if (step === 3) {
+      if (!form.date) {
+        newErrors.date = true;
+        toast.error("لطفاً تاریخ مراجعه را انتخاب کنید");
+        valid = false;
+      }
+      if (!form.time.trim()) {
+        newErrors.time = true;
+        toast.error("لطفاً ساعت مراجعه را وارد کنید");
+        valid = false;
+      } else if (!/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(form.time)) {
+        newErrors.time = true;
+        toast.error("ساعت باید به فرمت 24 ساعته HH:mm باشد (مثلاً 14:30)");
+        valid = false;
+      }
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
+  const nextStep = () => {
+    if (validateStep()) setStep((s) => Math.min(s + 1, 4));
+  };
+
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
   const formatDate = (date) => {
@@ -37,13 +97,27 @@ export default function BookingPage() {
     return typeof date === "string" ? date : date.format("YYYY/MM/DD");
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (step < 4) {
+        if (validateStep()) setStep((s) => Math.min(s + 1, 4));
+      } else {
+        // مرحله آخر، ارسال فرم
+        if (validateStep()) handleSubmit(e);
+      }
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateStep()) return;
 
     try {
       const payload = {
         ...form,
         date: formatDate(form.date),
+        time: form.time, // فقط HH:mm
       };
 
       await axios.post("http://localhost:3001/reservations", payload);
@@ -65,7 +139,11 @@ export default function BookingPage() {
 
       <Card className="w-full sm:w-[60%] h-auto mx-auto">
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-6"
+            onKeyDown={handleKeyDown}
+          >
             {step === 1 && (
               <>
                 <div>
@@ -82,7 +160,9 @@ export default function BookingPage() {
                     onChange={handleChange}
                     placeholder="مثلاً: علی رضایی"
                     required
-                    className="w-full"
+                    className={`w-full ${
+                      errors.fullName ? "border-red-500" : ""
+                    }`}
                   />
                 </div>
                 <div>
@@ -97,7 +177,7 @@ export default function BookingPage() {
                     onChange={handleChange}
                     placeholder="مثلاً: 09123456789"
                     required
-                    className="w-full"
+                    className={`w-full ${errors.phone ? "border-red-500" : ""}`}
                   />
                 </div>
               </>
@@ -119,7 +199,9 @@ export default function BookingPage() {
                     onChange={handleChange}
                     placeholder="مثلاً: پژو ۲۰۶"
                     required
-                    className="w-full"
+                    className={`w-full ${
+                      errors.carModel ? "border-red-500" : ""
+                    }`}
                   />
                 </div>
                 <div>
@@ -132,7 +214,9 @@ export default function BookingPage() {
                     value={form.service}
                     onChange={handleChange}
                     required
-                    className="w-full border border-gray-300 rounded px-3 py-2"
+                    className={`w-full border border-gray-300 rounded px-3 py-2 ${
+                      errors.service ? "border-red-500" : ""
+                    }`}
                   >
                     <option value="" disabled>
                       انتخاب کنید
@@ -154,29 +238,43 @@ export default function BookingPage() {
                     تاریخ مراجعه
                   </label>
                   <DatePicker
-                    className="my-orange-calendar"
+                    className={`my-orange-calendar ${
+                      errors.date ? "border-red-500" : ""
+                    }`}
                     calendar={persian}
                     locale={persian_fa}
                     value={form.date}
-                    onChange={(date) => setForm((prev) => ({ ...prev, date }))}
+                    onChange={(date) => {
+                      setForm((prev) => ({ ...prev, date }));
+                      setErrors((prev) => ({ ...prev, date: false }));
+                    }}
                     calendarPosition="bottom-right"
-                    inputClass="w-full border border-gray-300 rounded px-3 py-2"
+                    inputClass={`w-full border border-gray-300 rounded px-3 py-2 ${
+                      errors.date ? "border-red-500" : ""
+                    }`}
                   />
                 </div>
 
                 <div>
                   <label className="block mb-1 font-semibold" htmlFor="time">
-                    ساعت مراجعه
+                    ساعت مراجعه (فرمت 24 ساعته: ساعت:دقیقه)
                   </label>
                   <Input
                     id="time"
                     name="time"
-                    type="time"
+                    type="text"
+                    placeholder="مثلاً 14:30"
                     value={form.time}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      // فقط اجازه بده اعداد و : وارد بشه
+                      const val = e.target.value;
+                      if (/^$|^\d{0,2}(:\d{0,2})?$/.test(val)) {
+                        setForm((prev) => ({ ...prev, time: val }));
+                        setErrors((prev) => ({ ...prev, time: false }));
+                      }
+                    }}
+                    className={`w-full ${errors.time ? "border-red-500" : ""}`}
                     required
-                    step="60"
-                    className="w-full"
                   />
                 </div>
 
@@ -243,20 +341,23 @@ export default function BookingPage() {
                   قبلی
                 </Button>
               )}
+
               {step < 4 && (
                 <Button
-                  onClick={nextStep}
                   type="button"
+                  onClick={nextStep}
                   className="w-full sm:w-auto"
                 >
                   بعدی
                 </Button>
               )}
+
               {step === 4 && !submitted && (
                 <Button type="submit" className="w-full sm:w-auto">
                   ثبت رزرو
                 </Button>
               )}
+
               {step === 4 && submitted && (
                 <div className="text-orange-500 text-3xl font-bold flex items-center gap-2 mt-4 sm:mt-0">
                   <svg
